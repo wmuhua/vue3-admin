@@ -1,30 +1,13 @@
 <script setup lang="ts">
-// import { useI18n } from "vue-i18n";
-import { emitter } from "/@/utils/mitt";
 import Hamburger from "./sidebar/hamBurger.vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { unref, watch, getCurrentInstance, ref } from "vue";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import screenfull from "../components/screenfull/index.vue";
-// import globalization from "/@/assets/svg/globalization.svg"
 
-// const instance = getCurrentInstance().appContext.config.globalProperties.$storage;
 const pureApp = useAppStoreHook();
 const router = useRouter();
-const route = useRoute();
 let usename = storageSession.getItem("info")?.username;
-// const { locale, t } = useI18n();
-const locale = "zh";
-// watch(
-//   () => locale.value,
-//   () => {
-//     //@ts-ignore
-//     document.title = t(unref(route.meta.title)); // 动态title
-//   }
-// );
 
 // 退出登录
 const logout = (): void => {
@@ -32,24 +15,8 @@ const logout = (): void => {
   router.push("/login");
 };
 
-function onPanel() {
-  emitter.emit("openPanel");
-}
-
 function toggleSideBar() {
   pureApp.toggleSideBar();
-}
-
-// 简体中文
-function translationCh() {
-  // instance.locale = { locale: "zh" };
-  // locale.value = "zh";
-}
-
-// English
-function translationEn() {
-  // instance.locale = { locale: "en" };
-  // locale.value = "en";
 }
 </script>
 
@@ -64,55 +31,18 @@ function translationEn() {
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="vertical-header-right">
-      <!-- 全屏 -->
-      <!-- <screenfull v-show="!deviceDetection()" /> -->
-      <!-- 国际化 -->
-      <el-dropdown trigger="click">
-        <!-- <globalization /> -->
-        <template>
-          <el-dropdown-menu class="translation">
-            <el-dropdown-item
-              :style="{
-                background: locale === 'zh' ? '#1b2a47' : '',
-                color: locale === 'zh' ? '#f4f4f5' : '#000',
-              }"
-              @click="translationCh"
-              ><el-icon class="check-zh" v-show="locale === 'zh'">
-                <!-- <check /> --> </el-icon
-              >简体中文</el-dropdown-item
-            >
-            <el-dropdown-item
-              :style="{
-                background: locale === 'en' ? '#1b2a47' : '',
-                color: locale === 'en' ? '#f4f4f5' : '#000',
-              }"
-              @click="translationEn"
-              ><el-icon class="check-en" v-show="locale === 'en'">
-                <!-- <check /> --> </el-icon
-              >English</el-dropdown-item
-            >
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-      <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img
-            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
-          />
-          <p>{{ usename }}</p>
+          <img src="http://qwr-bbc-dev.uuuqwr.cn/h5/static/logo.png" />
+          <p class="username">{{ usename }}</p>
+          <el-icon><arrow-down /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout"
-              >1111</el-dropdown-item
-            >
+            <el-dropdown-item @click="logout">退出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-icon class="el-icon-setting" title="222" @click="onPanel">
-        <Setting />
-      </el-icon>
     </div>
   </div>
 </template>
@@ -145,24 +75,8 @@ function translationEn() {
     align-items: center;
     color: #000000d9;
     justify-content: flex-end;
-
-    .screen-full {
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
-
-    .globalization {
-      height: 48px;
-      width: 40px;
-      padding: 11px;
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
+    .username {
+      margin: 0 5px 0 10px;
     }
 
     .el-dropdown-link {
@@ -189,19 +103,6 @@ function translationEn() {
         border-radius: 50%;
       }
     }
-
-    .el-icon-setting {
-      height: 48px;
-      width: 38px;
-      padding: 12px;
-      display: flex;
-      cursor: pointer;
-      align-items: center;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
   }
 
   .breadcrumb-container {
@@ -209,35 +110,10 @@ function translationEn() {
   }
 }
 
-.translation {
-  .el-dropdown-menu__item {
-    padding: 0 40px !important;
-  }
-
-  .el-dropdown-menu__item:focus,
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    color: #606266;
-    background: #f0f0f0;
-  }
-
-  .check-zh {
-    position: absolute;
-    left: 20px;
-    top: 13px;
-  }
-
-  .check-en {
-    position: absolute;
-    bottom: 13px;
-    left: 20px;
-  }
-}
-
 .logout {
   .el-dropdown-menu__item {
     padding: 0 18px !important;
   }
-
   .el-dropdown-menu__item:focus,
   .el-dropdown-menu__item:not(.is-disabled):hover {
     color: #606266;

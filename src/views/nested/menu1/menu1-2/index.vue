@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="text-indent: 2em">{{ $t("message.hsmenu1-2") }}</p>
+    <p style="text-indent: 2em">{{ 1 - 2 }}</p>
     <router-view>
       <template #default="{ Component, route }">
         <transition appear name="fade-transform" mode="out-in">
@@ -28,8 +28,8 @@ export default {
     );
     return {
       keepAlive,
-      usePermissionStoreHook
+      usePermissionStoreHook,
     };
-  }
+  },
 };
 </script>

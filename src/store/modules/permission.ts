@@ -3,18 +3,18 @@ import { store } from "/@/store";
 import { cacheType } from "./types";
 import { constantRoutesArr, ascending, filterTree } from "/@/router/index";
 
-export const usePermissionStore = defineStore("pure-permission", {
+export const usePermissionStore = defineStore({
+  id: "pure-permission",
   state: () => ({
     // 静态路由
     constantRoutes: constantRoutesArr,
     wholeRoutes: [],
     buttonAuth: [],
     // 缓存页面keepAlive
-    cachePageList: [],
+    cachePageList: []
   }),
   actions: {
     asyncActionRoutes(routes) {
-      console.log(this.wholeRoutes);
       if (this.wholeRoutes.length > 0) return;
       this.wholeRoutes = filterTree(
         ascending(this.constantRoutes.concat(routes))
@@ -45,7 +45,7 @@ export const usePermissionStore = defineStore("pure-permission", {
           break;
         case "delete":
           // eslint-disable-next-line no-case-declarations
-          const delIndex = this.cachePageList.findIndex((v) => v === name);
+          const delIndex = this.cachePageList.findIndex(v => v === name);
           delIndex !== -1 && this.cachePageList.splice(delIndex, 1);
           break;
       }
@@ -53,11 +53,10 @@ export const usePermissionStore = defineStore("pure-permission", {
     // 清空缓存页面
     clearAllCachePage() {
       this.cachePageList = [];
-    },
-  },
+    }
+  }
 });
 
 export function usePermissionStoreHook() {
-  let route = usePermissionStore(store);
-  return route;
+  return usePermissionStore(store);
 }

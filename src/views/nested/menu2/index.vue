@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ $t("message.hsmenu2") }}</p>
+    <p>{{ 2 }}</p>
     <el-input v-model="input" />
   </div>
 </template>
@@ -11,8 +11,8 @@ export default defineComponent({
   name: "Menu2",
   setup() {
     return {
-      input: ref("")
+      input: ref(""),
     };
-  }
+  },
 });
 </script>

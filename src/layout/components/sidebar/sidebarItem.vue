@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import path from "path";
-import { PropType, ref, nextTick, getCurrentInstance } from "vue";
+import { PropType, ref, nextTick } from "vue";
 import { childrenType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
-// import Icon from "/@/components/ReIcon/src/Icon.vue";
 
-const instance = getCurrentInstance().appContext.app.config.globalProperties;
-const menuMode = instance.$storage.layout?.layout === "vertical";
 const pureApp = useAppStoreHook();
 
 const props = defineProps({
@@ -101,14 +98,12 @@ function resolvePath(routePath) {
             overflow: 'hidden',
           }"
         >
-          <span v-if="!menuMode">{{ $t(onlyOneChild.meta.title) }}</span>
           <el-tooltip
-            v-else
             placement="top"
             :offset="-10"
             :disabled="!onlyOneChild.showTooltip"
           >
-            <template #content> {{ $t(onlyOneChild.meta.title) }} </template>
+            <template #content> {{ onlyOneChild.meta.title }} </template>
             <span
               ref="menuTextRef"
               :style="{
@@ -118,14 +113,9 @@ function resolvePath(routePath) {
               }"
               @mouseover="hoverMenu(onlyOneChild)"
             >
-              {{ $t(onlyOneChild.meta.title) }}
+              {{ onlyOneChild.meta.title }}
             </span>
           </el-tooltip>
-          <!-- <Icon
-            v-if="onlyOneChild.meta.extraIcon"
-            :svg="onlyOneChild.meta.extraIcon.svg ? true : false"
-            :content="`${onlyOneChild.meta.extraIcon.name}`"
-          /> -->
         </div>
       </template>
     </el-menu-item>
@@ -141,14 +131,12 @@ function resolvePath(routePath) {
       <el-icon v-show="props.item.meta.icon" :class="props.item.meta.icon">
         <component :is="props.item.meta && props.item.meta.icon"></component>
       </el-icon>
-      <span v-if="!menuMode">{{ $t(props.item.meta.title) }}</span>
       <el-tooltip
-        v-else
         placement="top"
         :offset="-10"
         :disabled="!pureApp.sidebar.opened || !props.item.showTooltip"
       >
-        <template #content> {{ $t(props.item.meta.title) }} </template>
+        <template #content> {{ props.item.meta.title }} </template>
         <div
           ref="menuTextRef"
           :style="{
@@ -160,15 +148,10 @@ function resolvePath(routePath) {
           @mouseover="hoverMenu(props.item)"
         >
           <span style="overflow: hidden; text-overflow: ellipsis">
-            {{ $t(props.item.meta.title) }}
+            {{ props.item.meta.title }}
           </span>
         </div>
       </el-tooltip>
-      <Icon
-        v-if="props.item.meta.extraIcon"
-        :svg="props.item.meta.extraIcon.svg ? true : false"
-        :content="`${props.item.meta.extraIcon.name}`"
-      />
     </template>
     <sidebar-item
       v-for="child in props.item.children"

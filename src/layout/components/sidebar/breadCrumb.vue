@@ -17,14 +17,15 @@ const isDashboard = (route: RouteLocationMatched): boolean | string => {
 const getBreadcrumb = (): void => {
   let matched = route.matched.filter((item) => item.meta && item.meta.title);
   const first = matched[0];
+  // 面包屑最前面 要不要拼接首页？
   if (!isDashboard(first)) {
-    matched = [
-      {
-        path: "/welcome",
-        parentPath: "/",
-        meta: { title: "message.hshome" },
-      } as unknown as RouteLocationMatched,
-    ].concat(matched);
+    // matched = [
+    //   {
+    //     path: "/welcome",
+    //     parentPath: "/",
+    //     meta: { title: "首页" },
+    //   } as unknown as RouteLocationMatched,
+    // ].concat(matched);
   }
   levelList.value = matched.filter(
     (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false

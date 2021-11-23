@@ -3,10 +3,8 @@ import Axios, {
   Canceler,
   AxiosResponse,
   Method,
-  AxiosError
+  AxiosError,
 } from "axios";
-
-import { METHODS } from "./config";
 
 export type cancelTokenType = { cancelKey: string; cancelExecutor: Canceler };
 

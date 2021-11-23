@@ -1,11 +1,10 @@
 <script setup lang="ts">
-// import Logo from "./logo.vue";
+import Logo from "./logo.vue";
 import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
-import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
-import { computed, ref, onBeforeMount } from "vue";
+import { computed } from "vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
@@ -13,8 +12,6 @@ const route = useRoute();
 const pureApp = useAppStoreHook();
 const router = useRouter().options.routes;
 const routeStore = usePermissionStoreHook();
-console.log(1111, routeStore);
-const showLogo = ref(storageLocal.getItem("logoVal") || "1");
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });
@@ -50,17 +47,12 @@ const menuSelect = (indexPath: string): void => {
   }
   findCurrentRoute(algorithm.increaseIndexes(router));
 };
-
-onBeforeMount(() => {
-  emitter.on("logoChange", (key) => {
-    showLogo.value = key;
-  });
-});
 </script>
 
 <template>
-  <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
-    <!-- <Logo v-if="showLogo === '1'" :collapse="isCollapse" /> -->
+  <div class="sidebar-container">
+    <!-- <div class="logo">生活服务管理系统</div> -->
+    <Logo :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -83,3 +75,13 @@ onBeforeMount(() => {
     </el-scrollbar>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+</style>

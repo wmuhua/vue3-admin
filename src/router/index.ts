@@ -7,20 +7,20 @@ import {
 } from "vue-router";
 import { RouteConfigs } from "/@/layout/types";
 import { split, uniqBy } from "lodash-es";
-// import { i18n } from "/@/plugins/i18n";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 // import { useTimeoutFn } from "@vueuse/core";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+
 // 静态路由
 import Layout from "/@/layout/index.vue";
 import homeRouter from "./modules/home"; // 首页
 import errorRouter from "./modules/error"; // 错误
-// import nestedRouter from "./modules/nested"; // 多级菜单
+import nestedRouter from "./modules/nested"; // 多级菜单
 
 // import editorRouter from "./modules/editor"; // 编辑器
-// import externalLink from "./modules/externalLink"; // 外链
+import externalLink from "./modules/externalLink"; // 外链
 import remainingRouter from "./modules/remaining"; // 登录
 // import flowChartRouter from "./modules/flowchart";
 // import componentsRouter from "./modules/components";
@@ -35,8 +35,8 @@ const constantRoutes: Array<RouteComponent> = [
   // flowChartRouter,
   // editorRouter,
   // componentsRouter,
-  // nestedRouter,
-  // externalLink,
+  nestedRouter,
+  externalLink,
   errorRouter,
 ];
 
@@ -51,6 +51,7 @@ export const ascending = (arr) => {
 export const constantRoutesArr: Array<RouteComponent> = ascending(
   constantRoutes
 ).concat(...remainingRouter);
+
 // 过滤meta中showLink为false的路由
 export const filterTree = (data) => {
   const newTree = data.filter((v) => v.meta.showLink);

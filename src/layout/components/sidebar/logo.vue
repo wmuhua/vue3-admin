@@ -1,36 +1,18 @@
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 const props = defineProps({
-  collapse: Boolean
+  collapse: Boolean,
 });
-
-const title =
-  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 </script>
 
 <template>
   <div class="sidebar-logo-container" :class="{ collapse: props.collapse }">
     <transition name="sidebarLogoFade">
-      <router-link
-        v-if="props.collapse"
-        key="props.collapse"
-        :title="title"
-        class="sidebar-logo-link"
-        to="/"
-      >
-        <Icon svg :width="35" :height="35" content="team-iconlogo" />
-        <span class="sidebar-title">{{ title }}</span>
-      </router-link>
-      <router-link
-        v-else
-        key="expand"
-        :title="title"
-        class="sidebar-logo-link"
-        to="/"
-      >
-        <Icon svg :width="35" :height="35" content="team-iconlogo" />
-        <span class="sidebar-title">{{ title }}</span>
+      <router-link key="expand" class="sidebar-logo-link" to="/">
+        <!-- <img
+          class="slidebar-logo"
+          src="http://qwr-bbc-dev.uuuqwr.cn/h5/static/logo.png"
+        /> -->
+        <span class="sidebar-title">生活服务管理</span>
       </router-link>
     </transition>
   </div>
@@ -51,11 +33,18 @@ const title =
     text-overflow: ellipsis;
     margin-top: 5px;
 
+    .slidebar-logo {
+      position: relative;
+      left: -3px;
+      margin-right: 10px;
+      height: 38px;
+    }
+
     .sidebar-title {
-      color: #1890ff;
+      color: #fff;
       font-weight: 600;
       font-size: 20px;
-      margin-top: 10px;
+      line-height: 38px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
     }
   }

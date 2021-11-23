@@ -6,8 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <body>
-    <div id="app"></div>
+  <body layout="vertical">
+    <div id="app">
+      <style>
+        .loading-wrap {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        .loading-img img {
+          animation: loadingRotate 1.5s infinite linear;
+        }
+        .loading-desc {
+          margin-top: 10px;
+        }
+        @keyframes loadingRotate {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div class="loading-wrap">
+        <div class="loading-img">
+          <img src="/images/loading.png" alt="" />
+        </div>
+        <div class="loading-desc">载入中...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

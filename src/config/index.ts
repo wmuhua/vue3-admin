@@ -11,7 +11,7 @@ const getConfig = (key?: string): ServerConfigs => {
     const arr = key.split(".");
     if (arr && arr.length) {
       let data = config;
-      arr.forEach(v => {
+      arr.forEach((v) => {
         if (data && typeof data[v] !== "undefined") {
           data = data[v];
         } else {
@@ -30,10 +30,7 @@ export const getServerConfig = async (app: App): Promise<undefined> => {
   return axios({
     baseURL: "",
     method: "get",
-    url:
-      process.env.NODE_ENV === "production"
-        ? "/manages/serverConfig.json"
-        : "/serverConfig.json"
+    url: process.env.NODE_ENV === "production" ? "/xxx" : "/xxx",
   })
     .then(({ data: config }) => {
       let $config = app.config.globalProperties.$config;

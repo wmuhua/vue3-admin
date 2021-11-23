@@ -2,11 +2,6 @@
 import { ref, computed } from "vue";
 
 const date: Date = new Date();
-let loading = ref<boolean>(true);
-
-setTimeout(() => {
-  loading.value = !loading.value;
-}, 800);
 
 let greetings = computed(() => {
   if (date.getHours() >= 0 && date.getHours() < 12) {
@@ -30,7 +25,65 @@ let greetings = computed(() => {
         <span>{{ greetings }}</span>
       </div>
     </el-card> -->
-    <el-card>11111</el-card>
+    <el-card>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+      <p>中华人民共和国</p>
+    </el-card>
   </div>
 </template>
 
@@ -42,12 +95,11 @@ let greetings = computed(() => {
 
 <style lang="scss" scoped>
 .main-content {
-  margin: 0;
+  // margin: 0;
 }
 
 .welcome {
   height: 100%;
-
   .top-content {
     display: flex;
     justify-content: space-between;

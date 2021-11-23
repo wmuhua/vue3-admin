@@ -33,14 +33,14 @@ export default defineConfig({
     themePreprocessorPlugin({
       scss: {
         multipleScopeVars: [
-          {
-            // 暗雅（默认）
-            scopeName: "layout-theme-default",
-            path: pathResolve("src/layout/theme/default-vars.scss"),
-          },
+          // {
+          //   // 暗雅（默认）
+          //   scopeName: "layout-theme-default",
+          //   path: pathResolve("src/layout/theme/default-vars.scss"),
+          // },
           {
             // 明亮
-            scopeName: "layout-theme-light",
+            scopeName: "layout-theme-default",
             path: pathResolve("src/layout/theme/light-vars.scss"),
           },
           {

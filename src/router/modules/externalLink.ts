@@ -6,20 +6,20 @@ const externalLink = {
   component: Layout,
   meta: {
     icon: "Link",
-    title: "message.externalLink",
+    title: "外链",
     showLink: true,
-    rank: 190
+    rank: 190,
   },
   children: [
     {
-      path: "https://github.com/xiaoxian521/vue-pure-admin",
+      path: "https://www.baidu.com",
       meta: {
-        title: "message.externalLink",
+        title: "百度一下",
         showLink: true,
-        rank: 191
-      }
-    }
-  ]
+        rank: 191,
+      },
+    },
+  ],
 };
 
 export default externalLink;

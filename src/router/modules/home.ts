@@ -8,7 +8,7 @@ const homeRouter = {
   meta: {
     icon: "HomeFilled",
     showLink: true,
-    rank: 0
+    rank: 0,
   },
   children: [
     {
@@ -16,11 +16,11 @@ const homeRouter = {
       name: "welcome",
       component: () => import("/@/views/welcome.vue"),
       meta: {
-        title: "message.hshome",
-        showLink: true
-      }
-    }
-  ]
+        title: "首页",
+        showLink: true,
+      },
+    },
+  ],
 };
 
 export default homeRouter;

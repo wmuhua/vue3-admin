@@ -5,9 +5,9 @@ export const routerArrays: Array<RouteConfigs> = [
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",
-      showLink: true
-    }
-  }
+      showLink: true,
+    },
+  },
 ];
 
 export type RouteConfigs = {
@@ -40,7 +40,7 @@ export interface setType {
     withoutAnimation: boolean;
   };
   device: string;
-  fixedHeader: boolean;
+  // fixedHeader: boolean;
   classes: {
     hideSidebar: boolean;
     openSidebar: boolean;

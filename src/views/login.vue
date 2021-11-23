@@ -5,38 +5,8 @@ import { initRouter } from "/@/router";
 import { storageSession } from "/@/utils/storage";
 import { addClass, removeClass } from "/@/utils/operate";
 import bg from "/@/assets/login/bg.png";
-// import avatar from "/@/assets/login/avatar.svg";
-// import illustration0 from "/@/assets/login/illustration0.svg";
-// import illustration1 from "/@/assets/login/illustration1.svg";
-// import illustration2 from "/@/assets/login/illustration2.svg";
-// import illustration3 from "/@/assets/login/illustration3.svg";
-// import illustration4 from "/@/assets/login/illustration4.svg";
-// import illustration5 from "/@/assets/login/illustration5.svg";
-// import illustration6 from "/@/assets/login/illustration6.svg";
 
 const router = useRouter();
-
-// eslint-disable-next-line vue/return-in-computed-property
-const currentWeek = computed(() => {
-  switch (String(new Date().getDay())) {
-    case "0":
-      return illustration0;
-    case "1":
-      return illustration1;
-    case "2":
-      return illustration2;
-    case "3":
-      return illustration3;
-    case "4":
-      return illustration4;
-    case "5":
-      return illustration5;
-    case "6":
-      return illustration6;
-    default:
-      return illustration4;
-  }
-});
 
 let user = ref("admin");
 let pwd = ref("123456");
@@ -72,13 +42,10 @@ function onPwdBlur() {
 <template>
   <img :src="bg" class="wave" />
   <div class="container">
-    <div class="img">
-      <!-- <component :is="currentWeek"></component> -->
-    </div>
     <div class="login-box">
       <div class="login-form">
         <!-- <avatar class="avatar" /> -->
-        <h2>Pure Admin</h2>
+        <h2>生活服务管理</h2>
         <div class="input-group user focus">
           <div class="icon">
             <i class="fa fa-user"></i>
